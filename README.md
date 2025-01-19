@@ -107,5 +107,5 @@ This project is licensed under the MIT License. See the LICENSE file for more in
 ---
 
 ## Contact
-For inquiries or feedback, please email [your-email@example.com].
+For inquiries or feedback, please email kouace03@google.com
 
