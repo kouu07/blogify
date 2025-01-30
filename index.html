@@ -1,96 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feature-Rich Blog Platform</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Fun MCQ Quiz</title>
+    <style>
+        body { 
+            font-family: 'Comic Sans MS', cursive, sans-serif; 
+            text-align: center; 
+            background-color: #ffebcd;
+        }
+        .quiz-container { 
+            width: 60%; 
+            margin: auto; 
+            padding: 20px; 
+            border: 5px solid #ff6347; 
+            border-radius: 15px; 
+            background-color: #ffdab9; 
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        .question { 
+            font-weight: bold; 
+            font-size: 20px;
+            color: #d2691e;
+        }
+        .option { 
+            display: block; 
+            margin: 10px 0; 
+            cursor: pointer; 
+            font-size: 18px;
+        }
+        button { 
+            font-size: 18px; 
+            padding: 10px 20px; 
+            border: none; 
+            background-color: #ff4500; 
+            color: white; 
+            cursor: pointer; 
+            border-radius: 10px; 
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #ff6347;
+        }
+        .result { 
+            font-size: 24px; 
+            font-weight: bold; 
+            margin-top: 20px;
+            color: #008000;
+        }
+        .animated { 
+            animation: bounce 1s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
 </head>
-
 <body>
-    <!-- Navbar -->
-    <header class="navbar">
-        <div class="container">
-            <h1 class="logo">Blogify</h1>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#editor">Editor</a></li>
-                    <li><a href="#notes">Notes</a></li>
-                    <li><a href="#about">About</a></li>
-                </ul>
-            </nav>
-            <button class="toggle-theme">Dark Mode</button>
-        </div>
-    </header>
+    <div class="quiz-container">
+        <h2 class="animated">🎉 Fun MCQ Quiz 🎉</h2>
+        <div id="quiz"></div>
+        <button onclick="submitQuiz()">Submit</button>
+        <div class="result" id="result"></div>
+    </div>
+    
+    <script>
+        const questions = [
+            { question: "What is the capital of France?", options: ["Berlin", "Madrid", "Paris", "Rome"], answer: 2 },
+            { question: "Which language runs in a web browser?", options: ["Java", "C", "Python", "JavaScript"], answer: 3 },
+            { question: "What does CSS stand for?", options: ["Central Style Sheets", "Cascading Style Sheets", "Coded Style Sheets", "Computer Style Sheets"], answer: 1 }
+        ];
 
-    <!-- Home Section -->
-    <section id="home" class="home">
-        <div class="container">
-            <h2>Welcome to Blogify</h2>
-            <p>A feature-rich platform for creating, managing, and organizing blog content.</p>
-            <p id="note">Write a blog and save it to see them here.</p>
-            <div id="blog-container" class="blog-cards">
-                <!-- Saved blogs will appear here dynamically -->
-            </div>
-        </div>
-    </section>
+        function loadQuiz() {
+            const quizContainer = document.getElementById("quiz");
+            quizContainer.innerHTML = "";
+            questions.forEach((q, index) => {
+                const questionHtml = `<div class='question'>${index + 1}. ${q.question}</div>`;
+                let optionsHtml = "";
+                q.options.forEach((option, i) => {
+                    optionsHtml += `<label class='option'><input type='radio' name='q${index}' value='${i}'> ${option}</label>`;
+                });
+                quizContainer.innerHTML += questionHtml + optionsHtml + "<br>";
+            });
+        }
 
-    <!-- Blog Editor Section -->
-    <section id="editor" class="editor">
-        <div class="container">
-            <h2>Create a Blog</h2>
-            <div class="editor-toolbar">
-                <button data-command="bold">B</button>
-                <button data-command="italic">I</button>
-                <button data-command="underline">U</button>
-                <button data-command="insertUnorderedList">•</button>
-                <button data-command="createLink">Link</button>
-            </div>
-            <div id="editor-area" contenteditable="true" class="editor-area">
-                Start writing your blog here...
-            </div>
-            <button class="save-blog">Save Blog</button>
-            <button class="preview-blog">Preview</button>
-        </div>
-    </section>
+        function submitQuiz() {
+            let score = 0;
+            questions.forEach((q, index) => {
+                const selected = document.querySelector(`input[name='q${index}']:checked`);
+                if (selected && parseInt(selected.value) === q.answer) {
+                    score++;
+                }
+            });
+            const result = document.getElementById("result");
+            result.innerHTML = `🎯 You scored <span class='animated'>${score}</span> out of <span class='animated'>${questions.length}</span>! 🎉`;
+        }
 
-    <!-- Notes Section -->
-    <section id="notes" class="notes">
-        <div class="container">
-            <h2>Note Taking</h2>
-            <div class="note-creator">
-                <textarea placeholder="Write your note here..."></textarea>
-                <button class="add-note">Add Note</button>
-            </div>
-            <div class="note-list">
-                <h3>Your Notes</h3>
-                <ul id="notes-list">
-                    <!-- Notes will appear here dynamically -->
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2>About Blogify</h2>
-            <p>Blogify is a lightweight platform designed to enhance the blogging experience. Create, organize, and manage your blogs with ease!</p>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Blogify. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+        loadQuiz();
+    </script>
 </body>
-
 </html>
