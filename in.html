@@ -67,11 +67,89 @@
     </div>
     
     <script>
+        
         const questions = [
-            { question: "What is the capital of France?", options: ["Berlin", "Madrid", "Paris", "Rome"], answer: 2 },
-            { question: "Which language runs in a web browser?", options: ["Java", "C", "Python", "JavaScript"], answer: 3 },
-            { question: "What does CSS stand for?", options: ["Central Style Sheets", "Cascading Style Sheets", "Coded Style Sheets", "Computer Style Sheets"], answer: 1 }
-        ];
+  {
+    question: "If (a/b) + (c/d) = 1, which of the following is always true?",
+    options: ["ad + bc = bd", "ad - bc = bd", "ab + cd = bd", "None of these"]
+  },
+  {
+    question: "The sum of two fractions is 11/12, and one of them is 2/3. What is the other fraction?",
+    options: ["1/4", "3/4", "5/12", "7/12"]
+  },
+  {
+    question: "The reciprocal of the sum of the reciprocals of (5/6) and (3/4) is:",
+    options: ["30/19", "19/30", "30/13", "13/30"]
+  },
+  {
+    question: "Which of the following fractions is the greatest?",
+    options: ["7/9", "5/6", "3/4", "4/5"]
+  },
+  {
+    question: "If (x/y) = (3/4), then what is the value of (4x - 3y)/(2y)?",
+    options: ["3/8", "5/8", "1/2", "1/4"]
+  },
+  {
+    question: "What is the least common denominator of (3/8), (5/12), and (7/18)?",
+    options: ["72", "144", "36", "24"]
+  },
+  {
+    question: "A fraction is such that if 5 is added to both its numerator and denominator, it becomes 3/4. If 2 is subtracted from both, it becomes 1/2. What is the fraction?",
+    options: ["5/7", "7/9", "3/5", "2/3"]
+  },
+  {
+    question: "If (a/b) = (5/7), then (7a - 5b)/(2b) is equal to:",
+    options: ["0", "1", "1/2", "5/14"]
+  },
+  {
+    question: "The fraction equivalent to 0.23 (repeating) is:",
+    options: ["23/99", "23/100", "23/101", "23/98"]
+  },
+  {
+    question: "The product of two fractions is (15/56). If one fraction is (5/8), what is the other fraction?",
+    options: ["3/7", "7/15", "15/35", "3/10"]
+  },
+  {
+    question: "The smallest fraction among (7/10), (5/8), (3/5), and (2/3) is:",
+    options: ["2/3", "3/5", "5/8", "7/10"]
+  },
+  {
+    question: "If (a/b) = (c/d), then which of the following is necessarily true?",
+    options: ["a + b = c + d", "ad = bc", "a^2 = c^2", "ab = cd"]
+  },
+  {
+    question: "If (1/x) + (1/y) = 3/4 and (1/x) - (1/y) = 1/4, then x and y are:",
+    options: ["2, 4", "3, 6", "4, 2", "6, 3"]
+  },
+  {
+    question: "A fraction becomes (2/3) when 4 is added to the denominator, and (3/4) when 4 is added to the numerator. The fraction is:",
+    options: ["5/9", "7/11", "5/7", "3/5"]
+  },
+  {
+    question: "The mixed fraction form of 97/13 is:",
+    options: ["7 6/13", "6 9/13", "7 5/13", "7 4/13"]
+  },
+  {
+    question: "If (a/b) = (7/9), what is the value of (9a - 7b)/b?",
+    options: ["2", "0", "1", "-1"]
+  },
+  {
+    question: "Which of the following is closest to 0.23?",
+    options: ["1/5", "2/9", "1/4", "3/13"]
+  },
+  {
+    question: "If x = (3/4) and y = (5/6), find (x - y):",
+    options: ["1/12", "1/6", "-1/12", "-1/6"]
+  },
+  {
+    question: "If a = (5/8) and b = (3/4), what is (a^2 + b^2)?",
+    options: ["41/64", "49/64", "31/64", "47/64"]
+  },
+  {
+    question: "The sum of the infinite geometric series (1/3) + (1/9) + (1/27) + ... is:",
+    options: ["1/2", "1/3", "2/3", "1"]
+  }
+];
 
         function loadQuiz() {
             const quizContainer = document.getElementById("quiz");
